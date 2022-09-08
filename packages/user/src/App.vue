@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 text-3xl mx-auto max-w-6xl">
+  <div className="w-full md:w-2/3 flex flex-col items-center px-3">
     <div>Name: profile</div>
     <div>Framework: vue3</div>
     <div>Language: JavaScript</div>

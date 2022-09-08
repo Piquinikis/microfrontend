@@ -1,6 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
+const webpack = require("webpack")
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
@@ -19,12 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.(ts|tsx|js|jsx)$/,
         loader: 'babel-loader',
         options: { presets: ['@babel/env', '@babel/preset-react'] },
       },
@@ -32,6 +27,9 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
     new ModuleFederationPlugin({
       name: "blogpage",
       filename: "remoteEntry.js",

@@ -7,11 +7,11 @@ interface Props {
 }
 
 const RemoteWrapper = ({ children, fallback = null }: Props) => (
-  <div>
+  <>
     <ErrorBoundary>
       <React.Suspense fallback={fallback}>{children}</React.Suspense>
     </ErrorBoundary>
-  </div>
+  </>
 );
 
 export default RemoteWrapper;

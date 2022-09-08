@@ -12,30 +12,28 @@ import "./index.scss";
 
 export const App = () => (
   <BrowserRouter>
-    <div className="h-screen flex flex-col">
-      <Header />
-      <div className="my-8 flex-1 flex">
-        <Routes>
-          <Route path="/" element={
-            <div className="flex flex-1 items-center justify-center">
-              <RemoteWrapper>
-                <Home />
-              </RemoteWrapper>
-            </div>
-          } />
+    <Header />
 
-          <Route path="/profile" element={
-            <div className="flex flex-1 items-center justify-center">
-              <RemoteWrapper>
-                <ProfileAdapter />
-              </RemoteWrapper>
-            </div>
-          } />       
-        </Routes>
-      </div>
+    <div className="mx-auto flex flex-wrap py-6">
+      <Routes>
+        <Route path="/" element={
+          <RemoteWrapper>
+            <Home />
+          </RemoteWrapper>
+        } />
+
+        <Route path="/profile" element={
+          <RemoteWrapper>
+            <ProfileAdapter />
+          </RemoteWrapper>
+        } />       
+      </Routes>
+
       <Topics />
-      <Footer />
     </div>
+
+    <Footer />
+
   </BrowserRouter>
 );
 

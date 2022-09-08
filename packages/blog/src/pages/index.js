@@ -1,10 +1,18 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 
-const Home = () => {
+export default function Home({ data }) {
+  const { title, description } = data.site.siteMetadata
+
   return (
-    <StaticQuery 
-      query={graphql`
+    <div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+  )
+}
+
+export const pageQuery = graphql`
       query MetadataQuery {
         site {
           siteMetadata {
@@ -13,15 +21,4 @@ const Home = () => {
           }
         }
       }
-    `}
-      render={data => (
-        <div>
-          <h1>{data.site.siteMetadata.title}</h1>
-          <p>{data.site.siteMetadata.description}</p>
-        </div>
-      )}
-    />
-  )
-}
-
-export default Home;
+`
